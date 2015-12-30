@@ -2,8 +2,8 @@ import os
 import shutil
 from datetime import date
 
-path = "C:\Users\Julia\Pictures\Sony"
-pic_path = "C:\Users\Julia\Pictures"
+path = r"C:\Users\Julia\Pictures\Sony"
+pic_path = r"C:\Users\Julia\Pictures"
 
 pic_dirs = os.listdir(pic_path)
 files = os.listdir(path)
@@ -27,7 +27,7 @@ for f in filter(filter_function, files):
     new_dir = "".join([pic_path,os.sep,new_dir_part,os.sep])
     if new_dir_part not in pic_dirs:
         os.mkdir(new_dir)
-        print new_dir, " created"
+        print (new_dir, " created")
         pic_dirs.append(new_dir_part)
     #copy file
     f_name, f_ext = f.split('.')
@@ -39,8 +39,8 @@ for f in filter(filter_function, files):
         shutil.move(src_new,new_dir)
         counter += 1
     except OSError as o:
-        print f_new, "cannot be renamed"
-        print o
+        print (f_new, "cannot be renamed")
+        print (o)
     except shutil.Error:
-        print f_new, " already exists in ", new_dir     
-print counter, " pictures copied"
+        print (f_new, " already exists in ", new_dir)     
+print (counter, " pictures copied")
